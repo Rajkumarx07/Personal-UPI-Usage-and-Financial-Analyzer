@@ -3,11 +3,9 @@ import streamlit as st
 import PyPDF2
 from google import genai
 
-# ============== Streamlit App Setup ==============
 st.set_page_config(page_title="Smart Finance Tracker", page_icon="📈", layout="wide")
 
-# Set your Gemini API key (recommended: use environment variable for safety)
-GEMINI_API_KEY = "AIzaSyC7m_LbqKSBYMywj-CCdYsb5wM_K8I7gHE"  # replace with your real key
+GEMINI_API_KEY = "Give_your_API_Key"
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 
@@ -42,7 +40,7 @@ Transaction History:
 """
     try:
         response = client.models.generate_content(
-            model="gemini-2.5-flash",    # or "gemini-1.5-flash", per your model availability
+            model="gemini-2.5-flash",    
             contents=prompt
         )
         return response.text.strip()
@@ -74,3 +72,4 @@ if uploaded_file is not None:
         
 
     os.remove(temp_path)
+
